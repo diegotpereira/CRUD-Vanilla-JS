@@ -27,7 +27,7 @@
 
     <!--Alert -->
     <div class="alert-content">
-        <div class="alert d-none" role="alert" id="alert">
+        <div class="alert d-none" role="alert" id="alerta">
             Registro Guardado
         </div>
     </div>
@@ -87,12 +87,12 @@
                             <textarea name="" id="descricao" rows="3" class="form-control"></textarea>
                             <small id="txtErrorDescricao" class="text-danger form-text d-none"></small>
                         </div>
-                        <button type="reset" class="d-none" id="btnReset">Redefinir</button>
+                        <button type="reset" class="d-none" id="redefinir">Redefinir</button>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-secondary" id="fechar" data-dismiss="modal">Cancelar</button>
-                    <button type="button" id="btnAgregar" class="btn btn-primary">Criar</button>
+                    <button type="button" id="btn_add" class="btn btn-primary">Criar</button>
                 </div>
             </div>
         </div>
@@ -110,6 +110,9 @@
 
     <!-- SweatAlert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--Script para validação de formulário-->
+    <script src="js/validacao-formulario.js"></script>
 </body>
 
 </html>
