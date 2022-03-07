@@ -64,7 +64,7 @@ function definirDadosTabela() {
 							      <a class="link" data-toggle="collapse" data-target="#demo-${index}">Ler mais...</a>
 
 								  <div id="demo-${index}" class="collapse">
-								     ${tarefa.dado.picon}
+								     ${tarefa.dado.descricao}
 								  </div>
 							  </td>
 
@@ -76,6 +76,14 @@ function definirDadosTabela() {
 	                        `)
         .join("")
     tab_tarefas.innerHTML = tarefas_carregar
+}
+
+function definirDados() {
+    console.log(tarefa);
+    titulo.value = tarefa.dado.titulo
+    progresso.value = tarefa.dado.progresso
+    dificuldade.value = tarefa.dado.dificuldade
+    descricao.value = tarefa.dado.descricao
 }
 carregarDados()
 
