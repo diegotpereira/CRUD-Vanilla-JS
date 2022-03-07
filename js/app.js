@@ -1,4 +1,4 @@
-import { dados, mostrarAlerta, titulo, progresso, dificuldade, descricao, tarefa } from '../js/validacao-formulario.js'
+import { dados, mostrarAlerta, titulo, progresso, dificuldade, descricao, tarefa, obterTarefa } from '../js/validacao-formulario.js'
 
 const API = 'https://website-ecom-ff223-default-rtdb.firebaseio.com/'
 const tab_tarefas = document.getElementById('tabela-tarefas')
@@ -106,7 +106,6 @@ function sweetAlertaExcluir() {
     })
 }
 
-function obterTarefa() {}
 
 function definirDados() {
     console.log(tarefa);
@@ -117,4 +116,4 @@ function definirDados() {
 }
 carregarDados()
 
-export { enviarDados, API }
+export { enviarDados, API, definirDados }

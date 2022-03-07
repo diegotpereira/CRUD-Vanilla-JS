@@ -1,4 +1,4 @@
-import { enviarDados, API } from './app.js'
+import { enviarDados, API, definirDados } from './app.js'
 
 const btn_modal = document.querySelector('#btnModal')
 const btn_fechar = document.querySelector('#fechar')
@@ -102,4 +102,23 @@ titulo.addEventListener('keyup', () => {
 descricao.addEventListener('keyup', () => {
     entradaTextoEhValido(descricao, 'txtErrorDescricao', 'Digite pelo menos 4 caracteres')
 })
-export { dados, mostrarAlerta, titulo, progresso, dificuldade, descricao, tarefa }
+
+//Função buscar tarefa por id 
+function obterTarefa(e) {
+    btn_modal.click()
+    const id = e.target.dataset.indice
+    fetch(`${API}/tarefas/${id}.json`, {
+            method: 'GET',
+        })
+        .then((response) => response.json())
+        .then(respostaJson => {
+            tarefa = {
+                'id': id,
+                'dado': respostaJson
+            }
+            acaoCadastrar = 'PUT'
+            btn_add.innerHTML = 'Editar'
+            definirDados()
+        })
+}
+export { dados, mostrarAlerta, titulo, progresso, dificuldade, descricao, tarefa, obterTarefa }
