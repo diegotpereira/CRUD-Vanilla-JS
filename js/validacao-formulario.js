@@ -1,6 +1,8 @@
-const btn_modal = document.querySelector('btnModal')
-const btn_fechar = document.querySelector('fechar')
-const btn_redefinir = document.querySelector('redefinir')
+import { enviarDados, API } from './app.js'
+
+const btn_modal = document.querySelector('#btnModal')
+const btn_fechar = document.querySelector('#fechar')
+const btn_redefinir = document.querySelector('#redefinir')
 
 let titulo = document.getElementById('titulo')
 let progresso = document.getElementById('progresso')
@@ -33,7 +35,7 @@ function validarFormulario() {
     // Si el formulario es correcto, mostrar el sweet alert
     if (formularioCerto === 2) {
         dados = {
-            'titulo': titulo.ariaValueMax,
+            'titulo': titulo.value,
             'progresso': progresso.value,
             'dificuldade': dificuldade.value,
             'descricao': descricao.value
@@ -100,3 +102,4 @@ titulo.addEventListener('keyup', () => {
 descricao.addEventListener('keyup', () => {
     entradaTextoEhValido(descricao, 'txtErrorDescricao', 'Digite pelo menos 4 caracteres')
 })
+export { dados, mostrarAlerta, titulo, progresso, dificuldade, descricao, tarefa }
