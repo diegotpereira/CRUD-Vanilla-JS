@@ -95,7 +95,7 @@ function entradaTextoEhValido(input, idTxtError, descError) {
     // Retornar o valor de validação
     return validar
 }
-// Quando sobre a entrada
+// Quando se está sobre um input
 titulo.addEventListener('keyup', () => {
     entradaTextoEhValido(titulo, 'txtErrorTitulo', 'Digite pelo menos 4 caracteres')
 })
