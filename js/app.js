@@ -1,4 +1,4 @@
-import { dados, mostrarAlerta, titulo, progresso, dificuldade, descricao, tarefa, obterTarefa } from '../js/validacao-formulario.js'
+import { dados, titulo, progresso, dificuldade, descricao, tarefa, obterTarefa, mostrarAlerta } from '../js/validacao-formulario.js'
 
 const API = 'https://website-ecom-ff223-default-rtdb.firebaseio.com/'
 const tab_tarefas = document.getElementById('tabela-tarefas')
@@ -90,7 +90,7 @@ function definirDadosTabela() {
     })
 }
 // Sweet alert
-function sweetAlertaExcluir() {
+function sweetAlertaExcluir(e) {
     Swal.fire({
         title: 'Tem certeza?',
         text: 'O registro será excluído permanentemente!',
@@ -101,12 +101,26 @@ function sweetAlertaExcluir() {
         confirmButtonText: 'Sim, excluir!'
     }).then((result) => {
         if (result.isConfirmed) {
-
+            excluirTarefa(e)
         }
     })
 }
-
-
+// Função para excluir uma tarefa
+function excluirTarefa(e) {
+    e.preventDefault();
+    const id = e.target.dataset.indice
+    console.log(e.target.dataset.indice);
+    fetch(`${API}/tarefas/${id}.json`, {
+            method: 'Delete',
+        })
+        .then((response) => response.json())
+        .then(respostaJson => {
+            console.log('respostaJson', respostaJson);
+            carregarDados()
+            mostrarAlerta('alert-danger', 'Registro excluído')
+        })
+}
+// Função setar dados 
 function definirDados() {
     console.log(tarefa);
     titulo.value = tarefa.dado.titulo

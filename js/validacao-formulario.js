@@ -121,4 +121,4 @@ function obterTarefa(e) {
             definirDados()
         })
 }
-export { dados, mostrarAlerta, titulo, progresso, dificuldade, descricao, tarefa, obterTarefa }
+export { dados, titulo, progresso, dificuldade, descricao, tarefa, obterTarefa, mostrarAlerta }
