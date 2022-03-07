@@ -4,6 +4,8 @@ const API = 'https://website-ecom-ff223-default-rtdb.firebaseio.com/'
 const tab_tarefas = document.getElementById('tabela-tarefas')
 const btn_modal = document.getElementById('btnModal')
 let tarefas = []
+let btn_excluir = null
+let btn_editar = null
 
 //Cadastrar dado 'POST'
 function enviarDados(metodo) {
@@ -53,11 +55,11 @@ function definirDadosTabela() {
 
 							   <!-- Operador ternário para validar estilos de crachá -->
 							   <td><span class="badge rounded-pill
-							      ${tarefa.dado.progresso == 'Terminado' ? 'bg-verde' : tarefa.dado.progresso == 'Não Iniciado' ? 'bg-rojo' : tarefa.dado.progresso == 'Em curso' ? 'bg-amarillo' : ''}
+							      ${tarefa.dado.progresso == 'Terminado' ? 'bg-verde' : tarefa.dado.progresso == 'Não Iniciado' ? 'bg-vermelho' : tarefa.dado.progresso == 'Em curso' ? 'bg-amarelo' : ''}
 								  pl-2 pr-2">${tarefa.dado.progresso}</span></td>
 
 							   <td><span class="badge rounded-pill
-							   ${tarefa.dado.dificuldade == 'Facil' ? 'bg-amarillo' : tarefa.dado.dificuldade == 'Medio' ? 'bg-naranja' : tarefa.dado.dificuldade == 'Dificil' ? 'bg-rojo' : ''}
+							   ${tarefa.dado.dificuldade == 'Facil' ? 'bg-amarelo' : tarefa.dado.dificuldade == 'Médio' ? 'bg-laranja' : tarefa.dado.dificuldade == 'Dificil' ? 'bg-vermelho' : ''}
 							   pl-2 pr-2">${tarefa.dado.dificuldade}</span></td>
 
 							   <td>
@@ -69,14 +71,42 @@ function definirDadosTabela() {
 							  </td>
 
 							  <td>
-							     <button type="button" data-indice=${tarefa.id} class="btn btn-outline-warning editar mb-1>Editar</button>
-								 <button type="button" data-indice=${tarefa.id} class="btn btn-outline-danger excluir mb-1>Excluir</button>
+							     <button type="button" data-indice=${tarefa.id} class="btn btn-outline-warning editar mb-1">Editar</button>
+								 <button type="button" data-indice=${tarefa.id} class="btn btn-outline-danger excluir mb-1">Excluir</button>
 							  </td>
 							</tr>
 	                        `)
         .join("")
     tab_tarefas.innerHTML = tarefas_carregar
+    btn_excluir = document.getElementsByClassName('excluir')
+    btn_editar = document.getElementsByClassName('editar')
+
+    Array.from(btn_excluir).forEach(btn_excluir => {
+        btn_excluir.onclick = sweetAlertaExcluir
+    })
+
+    Array.from(btn_editar).forEach(btn_editar => {
+        btn_editar.onclick = obterTarefa
+    })
 }
+// Sweet alert
+function sweetAlertaExcluir() {
+    Swal.fire({
+        title: 'Tem certeza?',
+        text: 'O registro será excluído permanentemente!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sim, excluir!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+        }
+    })
+}
+
+function obterTarefa() {}
 
 function definirDados() {
     console.log(tarefa);

@@ -51,17 +51,17 @@ body {
 
 /*Badge*/
 
-.bg-amarillo {
+.bg-amarelo {
     background-color: rgb(255, 226, 145);
     color: rgb(37, 37, 37)
 }
 
-.bg-naranja {
+.bg-laranja {
     background-color: rgb(255, 171, 123);
     color: rgb(37, 37, 37)
 }
 
-.bg-rojo {
+.bg-vermelho {
     background-color: rgb(255, 169, 169);
     color: rgb(37, 37, 37)
 }
